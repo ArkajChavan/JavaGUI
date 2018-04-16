@@ -1,7 +1,7 @@
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Color;
+
 import javax.swing.*;
 
 /**
@@ -15,27 +15,27 @@ public class GUIDemo extends JFrame
     private JPanel panel;
     private JButton biggerButton;
     private JButton smallerButton;
-    private JButton feelingBlue;
+    private JButton clonePanel;
 
     /**
      * Set up the application.
      */
     public GUIDemo()
     {
- 	setTitle("Bigger/Smaller");
+	setTitle("Bigger/Smaller");
         setSize(200, 100);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         panel = new JPanel();
         biggerButton = new JButton("BIGGER");
         smallerButton = new JButton("SMALLER");
- 	feelingBlue = new JButton("Feelin' Blue");
+	cloneButton = new JButton("CLONE");
         biggerButton.addActionListener(new ButtonHandler());
         smallerButton.addActionListener(new ButtonHandler());
- 	feelingBlue.addActionListener(new ButtonHandler());
+	cloneButton.addActionListener(new ButtonHandler());
         add(panel);
         panel.add(biggerButton);
         panel.add(smallerButton);
- 	panel.add(feelingBlue);
+	panel.add(cloneButton);
         setVisible(true);
     }
 
@@ -57,10 +57,10 @@ public class GUIDemo extends JFrame
             {
                 setSize(size.width + 10, size.height + 10);
             }
-            else if (e.getSource().equals(feelingBlue))
-            {
-                 panel.setBackground(Color.blue);
-            }
+	    else if (e.getSource().equals(cloneButton))
+	    {
+		GUIDemo();
+	    }
             else
             {
                 setSize(size.width - 10, size.height - 10);
